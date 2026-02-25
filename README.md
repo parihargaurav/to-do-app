@@ -1,16 +1,87 @@
-# React + Vite
+📘 Todo App – Frontend Machine Coding Practice
+🧠 Problem Statement
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Build a Todo Application with the following features:
 
-Currently, two official plugins are available:
+Add a todo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Delete a todo
 
-## React Compiler
+Toggle complete
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Filter (All / Completed / Pending)
 
-## Expanding the ESLint configuration
+Persist data using localStorage
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🎯 Objective
+
+This project focuses on:
+
+State management using React hooks
+
+Immutability handling
+
+Derived state logic
+
+Side effects using useEffect
+
+Clean communication during machine coding
+
+Writing scalable frontend architecture
+
+🏗 Approach (How to Explain in Interview)
+Step 1: Requirement Clarification
+
+I will build a Todo app supporting CRUD operations, filtering, and persistence.
+I’ll start simple and refactor if needed.
+
+Step 2: State Identification
+
+We manage three main states:
+
+todos   // Array of todo objects
+text    // Input field value
+filter  // Current filter state
+Step 3: Core Functionalities
+➕ Add Todo
+
+Validate empty input
+
+Create new todo object
+
+Use functional state update
+
+Maintain immutability
+
+setTodos(prev => [...prev, newTodo])
+✅ Toggle Todo
+
+Use map() to update matching todo
+
+Return new object
+
+Preserve immutability
+
+❌ Delete Todo
+
+Use filter() to remove todo by id
+
+🔎 Filtering Logic
+
+Instead of storing filtered state:
+
+const filteredTodos = todos.filter(...)
+
+This avoids duplicate state and keeps logic clean.
+
+Step 4: Persistence
+
+Two effects:
+
+Load todos on mount
+
+Save todos whenever they change
+
+useEffect(() => {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}, [todos]);
